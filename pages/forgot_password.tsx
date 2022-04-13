@@ -79,11 +79,10 @@ import TextField from '@mui/material/TextField';
 import Router from 'next/router'
 import axios from 'axios'
 import { Button } from '@mui/material';
+import ArrowBack from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import Link from 'next/link';
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-
 function Auth() {
 const {userName,
   setUserName,
@@ -104,10 +103,7 @@ const {userName,
   return (
     <div className='background'>
       <div className='auth-container'>
-        <form className='auth-form' style={{display:"flex"}} onSubmit={e=>{
-          e.preventDefault()
-          console.log("submit clicked, username:",userName," secret=",secret)
-          }}>
+        <form className='auth-form' onSubmit={e=>e.preventDefault()}>
           <div className='auth-title text-title ' style={{width:'95%',marginLeft:'2.5%'}}>WhosApp
 
           </div>
@@ -115,16 +111,16 @@ const {userName,
             <input placeholder='Enter Email' className='text-input'/>
           </div> */}
 
-          <div className='login-buttons'>
+          <div className='login-buttons' style={{marginBottom:'20%'}}>
       <div style={{margin:5}}></div>
 
-            <Button className='white-font-buttons' style={{backgroundColor:'white',fontWeight:'900',color:'black'}} disabled={true} 
-            >Sign In</Button>
-      <div style={{margin:5}}></div>
-
-            <Link href={'/register'} passHref><Button className='white-font-buttons'>Register
-            <ArrowForwardIcon></ArrowForwardIcon>
+            <Link href='/' passHref><Button className='white-font-buttons'>
+            <ArrowBack></ArrowBack>Sign In
             </Button></Link>
+      <div style={{margin:5}}></div>
+
+            <Link href={'/register'} passHref><Button className='white-font-buttons'  >Register
+            <ArrowForwardIcon></ArrowForwardIcon></Button></Link>
       <div style={{margin:5}}></div>
 
           </div>
@@ -142,41 +138,28 @@ const {userName,
   color="warning"
   
 /> */}
-  <div style={{margin:'5%'}}></div>
-  <div style={{color:'white' ,backgroundColor:'hsla(136, 89%, 91%,0.85)',borderRadius:15,padding:5,paddingLeft:15,paddingRight:15,borderColor:'blue',borderWidth:5}}>
-            <TextField sx={{color:'warning.main',width:1}} id="password" label="Enter Password" variant="standard" color="primary" type="password" onChange={(e)=>{setSecret(e.target.value)}}/>
-
-          </div>
+  <div style={{margin:'8%'}}></div>
+  
 
 
 
     <div className="row">
       <div className='enter-button-container'>
-      <Button className='enter-button' type="submit">
-        <div>Sign In</div>
+      <Button className='enter-button'>
+        <div>Reset </div>
         <ArrowForwardIcon fontSize='medium'></ArrowForwardIcon>
       </Button>
       </div>
       <div style={{margin:5}}></div>
-      <Link href={'/forgot_password'} passHref>
-        <div className='forgot-button-container'>
-        
-          <Button className='forgot-button'>
-            Forgot Password?
-            {/* <QuestionMarkIcon fontSize='small'></QuestionMarkIcon> */}
-            <ArrowForwardIcon></ArrowForwardIcon>
-          </Button>
-        
-        </div>
-      </Link>
+      <div className='forgot-button-container'>
+      <Button className='forgot-button ' disabled={true} style={{backgroundColor:'white',fontWeight:'900',color:'black'}}>
+        <div>Forgot Password?</div>
+        {/* <ArrowForwardIcon></ArrowForwardIcon> */}
+        {/* <QuestionMarkIcon fontSize='small'></QuestionMarkIcon> */}
+      </Button>
+      </div>
     </div>
         </form>
-        <div className="scroll-option" style={{justifyContent:'space-around',backgroundColor:'black',width:'50%',
-        marginLeft:'20%',padding:'2.5%',position:'fixed',top:'88vh',
-        alignItems:'center',color:'white',flexDirection:"row"}}>
-          <div>Scroll in the above box</div>
-          <ArrowCircleDownIcon fontSize="medium" />
-        </div>
       </div>
       
     </div>
